@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="snakeJS.js" defer></script>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <style>
+        body {
+            font-family: 'Open Sans', serif;
+            background-color: #353638;
+            color: white;
+        }
+
+         div#header {
+             text-align: left;
+             display: inline-block;
+             padding-left: 2%;
+             margin-bottom: none;
+         }
+
+         div#header h2 {
+             margin-bottom: 0;
+         }
+
+         div#header h4 {
+             margin-top: 0;
+             padding-left: 7%;
+         }
+
+         span#settings {
+             float: right;
+         }
+
+         span#settings:hover {
+             cursor: pointer;
+         }
+
+        canvas#gameCanvas {
+            display: block;
+            margin-top: auto;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            background-color: #4b4f56;
+        }
+
+        div#alert {
+            position: absolute;
+            width: 20%;
+            height: 10%;
+            left: 40%;
+            right: 40%;
+            top: 45%;
+            bottom: 45%;
+            background-color: #353638;
+            z-index: 3;
+            text-align: center;
+            display: none;
+        }
+
+        div#settings-popup {
+            position: absolute;
+            width: 30%;
+            height: 37%;
+            left: 35%;
+            right: 35%;
+            top: 35%;
+            bottom: 35%;
+            background-color: #353638;
+            z-index: 4;
+            text-align: center;
+            display: none;
+        }
+        
+        div#overlay {
+            background-color: black;
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+            position: fixed;
+        }
+
+        button {
+            font-family: "Open Sans", serif;
+            color: white;
+            background-color: #079b2c;
+            border: none;
+            margin: auto;
+            cursor: pointer;
+            padding: 1%;
+        }
+
+        input {
+            background-color: #79797a;
+            width: 20%;
+            border-radius: 4%;
+            border: none;
+            transition: width .5s;
+            color: white;
+            font-family: "Open Sans", serif;
+        }
+
+        input#aimode {
+            margin: 0;
+            padding: 0;
+            transition: none;
+            position: relative;
+            width: 10%;
+        }
+
+        input:focus {
+            width: 26%;
+        }
+
+        @keyframes fadein {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeout {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                display: none;
+            }
+        }
+
+        @keyframes fadeinhalf {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: .5;
+            }
+        }
+
+        @keyframes fadeouthalf {
+            0% {
+                opacity: .5;
+            }
+            100% {
+                opacity: 0;
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h2>Snook</h2>
+        <h4 id="sub-header">The apple-eating snake game</h4>
+    </div>
+    <a><span id="settings">Settings</span></a>
+    <canvas id="gameCanvas" height="500" width="1100"></canvas>
+    <span id="score">Score: </span><br>
+    <span id="highscore">High score: </span>
+    <div id="overlay"></div>
+    <div id="alert">
+        <span>Oh noes! You are dead :(</span><br><br>
+        <button id="restart">Play again?</button>
+    </div>
+    <div id="settings-popup">
+        <span>Settings:</span><br><br>
+        <div class="control">
+            <span>Snake color:</span>
+            <input id="snakeColor" value="#ffffff" type="text"/>
+        </div><br>
+        <div class="control">
+            <span>Apple color:</span>
+            <input id="appleColor" value="#ff0000" type="text"/>
+        </div><br>
+        <div class="control">
+            <span>Tick:</span>
+            <input id="tickSpeed" value="90" type="text"/>
+        </div><br>
+        <div class="control">
+            <span>Activate AI mode (not perfect):</span>
+            <input id="aimode" value="ai" type="checkbox"/>
+        </div><br><br>
+        <button id="settingsChange">Finished</button>
+    </div>
+</body>
+</html>
